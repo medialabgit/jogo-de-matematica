@@ -35,7 +35,7 @@ const translations = {
     modalClose: "Fechar",
     modalBio: "Analista e Desenvolvedor de Sistemas | Multidisciplinar.<br>Fundador do <a href=\"https://mundodeahlam.com\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--blue-dark);font-weight:700;text-decoration:none\">Mundo de Ahlam</a>",
     modalPitchTag: "🤖",
-    modalPitchText: "aldrinosmar",
+    modalPitchText: "All",
     modalPitchCta: "Formações para a sua organização ou escola →",
     modalCC: "— Livre para usar, partilhar e adaptar, desde que preserve os direitos do autor."
   },
@@ -71,7 +71,7 @@ const translations = {
     modalClose: "Close",
     modalBio: "Systems Analyst and Developer | Multidisciplinary.<br>Founder of <a href=\"https://mundodeahlam.com\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--blue-dark);font-weight:700;text-decoration:none\">Mundo de Ahlam</a>",
     modalPitchTag: "🤖",
-    modalPitchText: "aldrinosmar",
+    modalPitchText: "All",
     modalPitchCta: "Training for your organisation or school →",
     modalCC: "— Free to use, share and adapt, provided attribution is preserved."
   },
@@ -107,7 +107,7 @@ const translations = {
     modalClose: "Fermer",
     modalBio: "Analyste et Développeur de Systèmes | Multidisciplinaire.<br>Fondateur de <a href=\"https://mundodeahlam.com\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--blue-dark);font-weight:700;text-decoration:none\">Mundo de Ahlam</a>",
     modalPitchTag: "🤖",
-    modalPitchText: "aldrinosmar",
+    modalPitchText: "All",
     modalPitchCta: "Formations pour votre organisation ou école →",
     modalCC: "— Libre d'utilisation, de partage et d'adaptation avec attribution."
   }
