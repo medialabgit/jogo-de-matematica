@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo de Matemática</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- LANGUAGE SELECTOR (always visible) -->
+  <div id="lang-bar">
+    <button class="lang-btn" data-lang="pt" title="Português">PT</button>
+    <button class="lang-btn" data-lang="en" title="English">EN</button>
+    <button class="lang-btn" data-lang="fr" title="Français">FR</button>
+    <button id="sound-toggle" title="Som / Sound">&#128264;</button>
+  </div>
+
+  <!-- SCREEN: Start -->
+  <section id="screen-start" class="screen active">
+    <div class="start-hero">
+      <div class="start-illustration">
+        <svg viewBox="0 0 600 200" class="hero-svg">
+          <!-- Sky -->
+          <rect width="600" height="200" fill="#87CEEB"/>
+          <!-- Clouds -->
+          <g class="cloud cloud-1">
+            <ellipse cx="80" cy="40" rx="40" ry="20" fill="#fff" opacity="0.9"/>
+            <ellipse cx="110" cy="35" rx="30" ry="18" fill="#fff" opacity="0.9"/>
+            <ellipse cx="60" cy="35" rx="25" ry="15" fill="#fff" opacity="0.9"/>
+          </g>
+          <g class="cloud cloud-2">
+            <ellipse cx="420" cy="50" rx="35" ry="18" fill="#fff" opacity="0.8"/>
+            <ellipse cx="450" cy="45" rx="28" ry="15" fill="#fff" opacity="0.8"/>
+          </g>
+          <!-- Ground -->
+          <rect y="150" width="600" height="50" fill="#4ade80"/>
+          <rect y="148" width="600" height="6" rx="3" fill="#22c55e"/>
+          <!-- Rope -->
+          <line x1="150" y1="115" x2="450" y2="115" stroke="#a16207" stroke-width="6" stroke-linecap="round"/>
+          <!-- Blue team -->
+          <g class="hero-char-left">
+            <circle cx="140" cy="95" r="18" fill="#2563eb"/>
+            <circle cx="134" cy="92" r="3.5" fill="#fff"/><circle cx="146" cy="92" r="3.5" fill="#fff"/>
+            <circle cx="134" cy="92" r="1.8" fill="#1e3a5f"/><circle cx="146" cy="92" r="1.8" fill="#1e3a5f"/>
+            <path d="M132 100 Q140 106 148 100" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <rect x="128" y="113" width="24" height="28" rx="6" fill="#2563eb"/>
+            <rect x="112" y="110" width="18" height="8" rx="4" fill="#2563eb"/>
+            <rect x="128" y="141" width="9" height="18" rx="4" fill="#1d4ed8"/>
+            <rect x="143" y="141" width="9" height="18" rx="4" fill="#1d4ed8"/>
+          </g>
+          <g class="hero-char-left" transform="translate(-60,8) scale(0.85)">
+            <circle cx="140" cy="95" r="18" fill="#3b82f6"/>
+            <circle cx="134" cy="92" r="3.5" fill="#fff"/><circle cx="146" cy="92" r="3.5" fill="#fff"/>
+            <circle cx="134" cy="92" r="1.8" fill="#1e3a5f"/><circle cx="146" cy="92" r="1.8" fill="#1e3a5f"/>
+            <rect x="128" y="113" width="24" height="28" rx="6" fill="#3b82f6"/>
+            <rect x="112" y="110" width="18" height="8" rx="4" fill="#3b82f6"/>
+            <rect x="128" y="141" width="9" height="18" rx="4" fill="#2563eb"/>
+            <rect x="143" y="141" width="9" height="18" rx="4" fill="#2563eb"/>
+          </g>
+          <!-- Red team -->
+          <g class="hero-char-right">
+            <circle cx="460" cy="95" r="18" fill="#dc2626"/>
+            <circle cx="454" cy="92" r="3.5" fill="#fff"/><circle cx="466" cy="92" r="3.5" fill="#fff"/>
+            <circle cx="454" cy="92" r="1.8" fill="#7f1d1d"/><circle cx="466" cy="92" r="1.8" fill="#7f1d1d"/>
+            <path d="M452 100 Q460 106 468 100" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <rect x="448" y="113" width="24" height="28" rx="6" fill="#dc2626"/>
+            <rect x="470" y="110" width="18" height="8" rx="4" fill="#dc2626"/>
+            <rect x="448" y="141" width="9" height="18" rx="4" fill="#b91c1c"/>
+            <rect x="463" y="141" width="9" height="18" rx="4" fill="#b91c1c"/>
+          </g>
+          <g class="hero-char-right" transform="translate(60,8) scale(0.85)">
+            <circle cx="460" cy="95" r="18" fill="#ef4444"/>
+            <circle cx="454" cy="92" r="3.5" fill="#fff"/><circle cx="466" cy="92" r="3.5" fill="#fff"/>
+            <circle cx="454" cy="92" r="1.8" fill="#7f1d1d"/><circle cx="466" cy="92" r="1.8" fill="#7f1d1d"/>
+            <rect x="448" y="113" width="24" height="28" rx="6" fill="#ef4444"/>
+            <rect x="470" y="110" width="18" height="8" rx="4" fill="#ef4444"/>
+            <rect x="448" y="141" width="9" height="18" rx="4" fill="#dc2626"/>
+            <rect x="463" y="141" width="9" height="18" rx="4" fill="#dc2626"/>
+          </g>
+          <!-- Flag marker -->
+          <rect x="296" y="105" width="8" height="20" rx="2" fill="#eab308"/>
+          <polygon points="304,105 320,112 304,119" fill="#eab308"/>
+        </svg>
+      </div>
+      <h1 data-i18n="title">Jogo de Matemática</h1>
+      <div class="start-buttons">
+        <button id="btn-play" class="btn btn-primary btn-big" data-i18n="play">Jogar</button>
+        <button id="btn-settings" class="btn btn-secondary btn-big" data-i18n="settings">Configurações</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN: Settings -->
+  <section id="screen-settings" class="screen">
+    <div class="settings-card">
+      <h2 data-i18n="settings">Configurações</h2>
+      <div class="settings-grid">
+        <label data-i18n="language">Idioma</label>
+        <select id="cfg-language">
+          <option value="pt">Português</option>
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+        </select>
+
+        <label data-i18n="operation">Operações</label>
+        <select id="cfg-operation">
+          <option value="addition" data-i18n-opt="opAdd">Soma</option>
+          <option value="subtraction" data-i18n-opt="opSub">Subtração</option>
+          <option value="multiplication" data-i18n-opt="opMul">Multiplicação</option>
+          <option value="division" data-i18n-opt="opDiv">Divisão</option>
+          <option value="mixed" data-i18n-opt="opMix">Mistura</option>
+        </select>
+
+        <label data-i18n="difficulty">Dificuldade</label>
+        <select id="cfg-difficulty">
+          <option value="1">1 (0–10)</option>
+          <option value="2">2 (0–50)</option>
+          <option value="3">3 (0–100)</option>
+        </select>
+
+        <label data-i18n="time">Tempo</label>
+        <select id="cfg-time">
+          <option value="60">60 s</option>
+          <option value="90">90 s</option>
+          <option value="120">120 s</option>
+          <option value="0" data-i18n-opt="training">Modo treino</option>
+        </select>
+
+        <label data-i18n="pointsToWin">Pontos para vencer</label>
+        <select id="cfg-points">
+          <option value="5">5</option>
+          <option value="10" selected>10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+        </select>
+      </div>
+      <div class="settings-actions">
+        <button id="btn-save-settings" class="btn btn-primary" data-i18n="save">Guardar</button>
+        <button id="btn-back-start" class="btn btn-secondary" data-i18n="back">Voltar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN: Game -->
+  <section id="screen-game" class="screen">
+    <!-- Timer bar -->
+    <div id="timer-bar-wrapper">
+      <div id="timer-bar"></div>
+      <span id="timer-text">60</span>
+    </div>
+
+    <!-- TUG OF WAR SCENE (horizontal, full width) -->
+    <div id="tug-scene">
+      <div id="tug-sky">
+        <div class="scene-cloud sc-1"></div>
+        <div class="scene-cloud sc-2"></div>
+        <div class="scene-cloud sc-3"></div>
+      </div>
+      <div id="tug-ground"></div>
+      <!-- Center line on the ground (boundary) -->
+      <div id="center-line"></div>
+
+      <!-- SVG tug-of-war illustration — rope at y=148, ground at y=190, viewBox 900x220 -->
+      <svg id="tug-svg" viewBox="0 0 900 220" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="skin1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#fcd9b6"/><stop offset="100%" stop-color="#f5c69a"/>
+          </linearGradient>
+          <linearGradient id="skin2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#c68642"/><stop offset="100%" stop-color="#a3662a"/>
+          </linearGradient>
+          <linearGradient id="skin3" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#ffe0bd"/><stop offset="100%" stop-color="#f5cba7"/>
+          </linearGradient>
+          <linearGradient id="skin4" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#d4a76a"/><stop offset="100%" stop-color="#c49454"/>
+          </linearGradient>
+          <linearGradient id="skin5" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#7D4A2B"/><stop offset="100%" stop-color="#5C3015"/>
+          </linearGradient>
+        </defs>
+
+        <g id="tug-group">
+          <!-- ROPE at y=148 -->
+          <line x1="100" y1="148" x2="800" y2="148" stroke="#8B6914" stroke-width="10" stroke-linecap="round"/>
+          <line x1="100" y1="148" x2="800" y2="148" stroke="#C4A23A" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 8" opacity="0.5"/>
+
+          <!-- HANDS on the rope (blue team grips) -->
+          <circle cx="340" cy="148" r="7" fill="#7D4A2B" stroke="#5C3015" stroke-width="1.5"/>
+          <circle cx="270" cy="148" r="7" fill="#f5c69a" stroke="#d4a574" stroke-width="1.5"/>
+          <circle cx="200" cy="148" r="7" fill="#f5cba7" stroke="#d4a574" stroke-width="1.5"/>
+          <!-- HANDS on the rope (red team grips) -->
+          <circle cx="560" cy="148" r="7" fill="#f5c69a" stroke="#d4a574" stroke-width="1.5"/>
+          <circle cx="630" cy="148" r="7" fill="#a3662a" stroke="#8a5520" stroke-width="1.5"/>
+          <circle cx="700" cy="148" r="7" fill="#f5cba7" stroke="#d4a574" stroke-width="1.5"/>
+
+          <!-- FLAG / MARKER at center -->
+          <g id="svg-flag">
+            <rect x="446" y="108" width="7" height="46" rx="2" fill="#6B4226"/>
+            <polygon points="453,108 482,118 453,128" fill="#eab308" class="flag-wave"/>
+            <circle cx="449" cy="108" r="3" fill="#eab308"/>
+          </g>
+
+          <!-- ===== BLUE TEAM (left, leaning LEFT, arms reach RIGHT to rope) ===== -->
+
+          <!-- Blue Boy 1 (closest) - pele escura -->
+          <g class="svg-puller blue-puller bp1">
+            <!-- Legs bracing on ground -->
+            <line x1="352" y1="170" x2="338" y2="205" stroke="#1e3a5f" stroke-width="10" stroke-linecap="round"/>
+            <ellipse cx="334" cy="207" rx="11" ry="5" fill="#333"/>
+            <line x1="362" y1="170" x2="378" y2="203" stroke="#1e3a5f" stroke-width="10" stroke-linecap="round"/>
+            <ellipse cx="382" cy="205" rx="11" ry="5" fill="#333"/>
+            <!-- Body leaning back-left -->
+            <ellipse cx="348" cy="152" rx="16" ry="24" fill="#2563eb" transform="rotate(18,348,152)"/>
+            <!-- Arms to rope grip at (340,148) -->
+            <line x1="340" y1="136" x2="340" y2="148" stroke="url(#skin5)" stroke-width="8" stroke-linecap="round"/>
+            <line x1="350" y1="140" x2="340" y2="148" stroke="url(#skin5)" stroke-width="8" stroke-linecap="round"/>
+            <!-- Head -->
+            <circle cx="332" cy="118" r="17" fill="url(#skin5)"/>
+            <!-- Hair (curto, escuro) -->
+            <ellipse cx="330" cy="106" rx="16" ry="10" fill="#1a0e06"/>
+            <ellipse cx="322" cy="112" rx="6" ry="8" fill="#1a0e06"/>
+            <!-- Eyes -->
+            <circle cx="326" cy="117" r="2.5" fill="#1e293b"/><circle cx="338" cy="117" r="2.5" fill="#1e293b"/>
+            <circle cx="327" cy="116" r="1" fill="#fff"/><circle cx="339" cy="116" r="1" fill="#fff"/>
+            <!-- Smile -->
+            <path d="M328 124 Q333 128 338 124" stroke="#c0392b" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </g>
+
+          <!-- Blue Girl 2 (middle) - ponytail loira -->
+          <g class="svg-puller blue-puller bp2">
+            <line x1="280" y1="172" x2="264" y2="207" stroke="#1e3a5f" stroke-width="9" stroke-linecap="round"/>
+            <ellipse cx="260" cy="209" rx="10" ry="5" fill="#333"/>
+            <line x1="290" y1="172" x2="304" y2="205" stroke="#1e3a5f" stroke-width="9" stroke-linecap="round"/>
+            <ellipse cx="308" cy="207" rx="10" ry="5" fill="#333"/>
+            <!-- Body -->
+            <ellipse cx="277" cy="154" rx="15" ry="23" fill="#3b82f6" transform="rotate(20,277,154)"/>
+            <!-- Skirt -->
+            <ellipse cx="277" cy="173" rx="16" ry="5" fill="#2563eb"/>
+            <!-- Arms to grip at (270,148) -->
+            <line x1="270" y1="138" x2="270" y2="148" stroke="url(#skin1)" stroke-width="7" stroke-linecap="round"/>
+            <line x1="280" y1="142" x2="270" y2="148" stroke="url(#skin1)" stroke-width="7" stroke-linecap="round"/>
+            <!-- Head -->
+            <circle cx="258" cy="120" r="16" fill="url(#skin1)"/>
+            <!-- Hair loira + rabo-de-cavalo -->
+            <ellipse cx="256" cy="108" rx="15" ry="9" fill="#d4a820"/>
+            <ellipse cx="246" cy="112" rx="7" ry="5" fill="#d4a820"/>
+            <path d="M244 114 Q234 132 240 150" stroke="#d4a820" stroke-width="7" fill="none" stroke-linecap="round"/>
+            <!-- Headband -->
+            <rect x="243" y="112" width="26" height="3" rx="1.5" fill="#60a5fa"/>
+            <!-- Eyes + lashes -->
+            <circle cx="252" cy="119" r="2.5" fill="#1e293b"/><circle cx="264" cy="119" r="2.5" fill="#1e293b"/>
+            <circle cx="253" cy="118" r="1" fill="#fff"/><circle cx="265" cy="118" r="1" fill="#fff"/>
+            <line x1="249" y1="117" x2="248" y2="115" stroke="#1e293b" stroke-width="1"/>
+            <line x1="267" y1="117" x2="268" y2="115" stroke="#1e293b" stroke-width="1"/>
+            <path d="M254 126 Q258 130 264 126" stroke="#c0392b" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </g>
+
+          <!-- Blue Boy 3 (anchor) - cap -->
+          <g class="svg-puller blue-puller bp3">
+            <line x1="210" y1="174" x2="194" y2="207" stroke="#1e3a5f" stroke-width="10" stroke-linecap="round"/>
+            <ellipse cx="190" cy="209" rx="11" ry="5" fill="#333"/>
+            <line x1="220" y1="174" x2="236" y2="205" stroke="#1e3a5f" stroke-width="10" stroke-linecap="round"/>
+            <ellipse cx="240" cy="207" rx="11" ry="5" fill="#333"/>
+            <!-- Body -->
+            <ellipse cx="207" cy="155" rx="16" ry="24" fill="#1d4ed8" transform="rotate(22,207,155)"/>
+            <!-- Arms to grip at (200,148) -->
+            <line x1="200" y1="138" x2="200" y2="148" stroke="url(#skin3)" stroke-width="8" stroke-linecap="round"/>
+            <line x1="210" y1="142" x2="200" y2="148" stroke="url(#skin3)" stroke-width="8" stroke-linecap="round"/>
+            <!-- Head -->
+            <circle cx="188" cy="120" r="17" fill="url(#skin3)"/>
+            <!-- Curly hair -->
+            <ellipse cx="187" cy="108" rx="16" ry="10" fill="#d4a259"/>
+            <circle cx="176" cy="110" r="5" fill="#d4a259"/>
+            <circle cx="198" cy="108" r="5" fill="#d4a259"/>
+            <!-- Cap -->
+            <ellipse cx="185" cy="106" rx="15" ry="7" fill="#1e40af"/>
+            <rect x="170" y="105" width="14" height="6" rx="2" fill="#1e40af"/>
+            <!-- Eyes -->
+            <circle cx="182" cy="119" r="2.5" fill="#1e293b"/><circle cx="194" cy="119" r="2.5" fill="#1e293b"/>
+            <circle cx="183" cy="118" r="1" fill="#fff"/><circle cx="195" cy="118" r="1" fill="#fff"/>
+            <path d="M184 126 Q189 130 194 126" stroke="#c0392b" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </g>
+
+          <!-- ===== RED TEAM (right, leaning RIGHT, arms reach LEFT to rope) ===== -->
+
+          <!-- Red Boy 1 (closest) -->
+          <g class="svg-puller red-puller rp1">
+            <line x1="548" y1="170" x2="532" y2="203" stroke="#4a1010" stroke-width="10" stroke-linecap="round"/>
+            <ellipse cx="528" cy="205" rx="11" ry="5" fill="#333"/>
+            <line x1="558" y1="170" x2="572" y2="205" stroke="#4a1010" stroke-width="10" stroke-linecap="round"/>
+            <ellipse cx="576" cy="207" rx="11" ry="5" fill="#333"/>
+            <!-- Body leaning right -->
+            <ellipse cx="558" cy="152" rx="16" ry="24" fill="#dc2626" transform="rotate(-18,558,152)"/>
+            <!-- Arms to grip at (560,148) -->
+            <line x1="560" y1="136" x2="560" y2="148" stroke="url(#skin1)" stroke-width="8" stroke-linecap="round"/>
+            <line x1="550" y1="140" x2="560" y2="148" stroke="url(#skin1)" stroke-width="8" stroke-linecap="round"/>
+            <!-- Head -->
+            <circle cx="574" cy="118" r="17" fill="url(#skin1)"/>
+            <!-- Hair -->
+            <ellipse cx="576" cy="106" rx="16" ry="10" fill="#5c3317"/>
+            <ellipse cx="584" cy="112" rx="6" ry="8" fill="#5c3317"/>
+            <!-- Cap -->
+            <ellipse cx="576" cy="105" rx="14" ry="7" fill="#b91c1c"/>
+            <rect x="576" y="104" width="14" height="6" rx="2" fill="#b91c1c"/>
+            <!-- Eyes -->
+            <circle cx="568" cy="117" r="2.5" fill="#1e293b"/><circle cx="580" cy="117" r="2.5" fill="#1e293b"/>
+            <circle cx="569" cy="116" r="1" fill="#fff"/><circle cx="581" cy="116" r="1" fill="#fff"/>
+            <path d="M570 124 Q575 128 580 124" stroke="#c0392b" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </g>
+
+          <!-- Red Girl 2 (middle) - pigtails -->
+          <g class="svg-puller red-puller rp2">
+            <line x1="620" y1="172" x2="604" y2="205" stroke="#4a1010" stroke-width="9" stroke-linecap="round"/>
+            <ellipse cx="600" cy="207" rx="10" ry="5" fill="#333"/>
+            <line x1="630" y1="172" x2="644" y2="205" stroke="#4a1010" stroke-width="9" stroke-linecap="round"/>
+            <ellipse cx="648" cy="207" rx="10" ry="5" fill="#333"/>
+            <!-- Body -->
+            <ellipse cx="630" cy="154" rx="15" ry="23" fill="#ef4444" transform="rotate(-20,630,154)"/>
+            <!-- Skirt -->
+            <ellipse cx="630" cy="173" rx="16" ry="5" fill="#dc2626"/>
+            <!-- Arms to grip at (630,148) -->
+            <line x1="630" y1="138" x2="630" y2="148" stroke="url(#skin2)" stroke-width="7" stroke-linecap="round"/>
+            <line x1="622" y1="142" x2="630" y2="148" stroke="url(#skin2)" stroke-width="7" stroke-linecap="round"/>
+            <!-- Head -->
+            <circle cx="648" cy="120" r="16" fill="url(#skin2)"/>
+            <!-- Hair + pigtails -->
+            <ellipse cx="649" cy="108" rx="15" ry="9" fill="#1a1a2e"/>
+            <circle cx="636" cy="110" r="5" fill="#1a1a2e"/>
+            <path d="M636 115 Q628 132 632 150" stroke="#1a1a2e" stroke-width="6" fill="none" stroke-linecap="round"/>
+            <circle cx="662" cy="110" r="5" fill="#1a1a2e"/>
+            <path d="M662 115 Q670 132 666 150" stroke="#1a1a2e" stroke-width="6" fill="none" stroke-linecap="round"/>
+            <!-- Bows -->
+            <circle cx="636" cy="113" r="3" fill="#f472b6"/>
+            <circle cx="662" cy="113" r="3" fill="#f472b6"/>
+            <!-- Eyes + lashes -->
+            <circle cx="642" cy="119" r="2.5" fill="#1e293b"/><circle cx="654" cy="119" r="2.5" fill="#1e293b"/>
+            <circle cx="643" cy="118" r="1" fill="#fff"/><circle cx="655" cy="118" r="1" fill="#fff"/>
+            <line x1="639" y1="117" x2="638" y2="115" stroke="#1e293b" stroke-width="1"/>
+            <line x1="657" y1="117" x2="658" y2="115" stroke="#1e293b" stroke-width="1"/>
+            <path d="M644 126 Q649 130 654 126" stroke="#c0392b" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </g>
+
+          <!-- Red Boy 3 (anchor) - headband -->
+          <g class="svg-puller red-puller rp3">
+            <line x1="690" y1="174" x2="674" y2="207" stroke="#4a1010" stroke-width="10" stroke-linecap="round"/>
+            <ellipse cx="670" cy="209" rx="11" ry="5" fill="#333"/>
+            <line x1="700" y1="174" x2="716" y2="205" stroke="#4a1010" stroke-width="10" stroke-linecap="round"/>
+            <ellipse cx="720" cy="207" rx="11" ry="5" fill="#333"/>
+            <!-- Body -->
+            <ellipse cx="700" cy="155" rx="16" ry="24" fill="#b91c1c" transform="rotate(-22,700,155)"/>
+            <!-- Arms to grip at (700,148) -->
+            <line x1="700" y1="138" x2="700" y2="148" stroke="url(#skin3)" stroke-width="8" stroke-linecap="round"/>
+            <line x1="692" y1="142" x2="700" y2="148" stroke="url(#skin3)" stroke-width="8" stroke-linecap="round"/>
+            <!-- Head -->
+            <circle cx="718" cy="120" r="17" fill="url(#skin3)"/>
+            <!-- Hair -->
+            <ellipse cx="719" cy="108" rx="16" ry="11" fill="#8B4513"/>
+            <!-- Headband -->
+            <rect x="704" y="112" width="28" height="3" rx="1.5" fill="#dc2626"/>
+            <!-- Eyes -->
+            <circle cx="712" cy="119" r="2.5" fill="#1e293b"/><circle cx="724" cy="119" r="2.5" fill="#1e293b"/>
+            <circle cx="713" cy="118" r="1" fill="#fff"/><circle cx="725" cy="118" r="1" fill="#fff"/>
+            <path d="M714 126 Q719 130 724 126" stroke="#c0392b" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </g>
+        </g>
+      </svg>
+
+      <!-- Score badges floating over the scene -->
+      <div class="scene-score scene-score-left">
+        <span class="scene-score-label" data-i18n="team1">Equipa 1</span>
+        <span class="scene-score-value" id="scene-score-1">0</span>
+      </div>
+      <div class="scene-score scene-score-right">
+        <span class="scene-score-label" data-i18n="team2">Equipa 2</span>
+        <span class="scene-score-value" id="scene-score-2">0</span>
+      </div>
+    </div>
+
+    <!-- Team panels below the scene -->
+    <div id="teams-row">
+      <!-- Team 1 (blue) -->
+      <div class="team-panel team-blue">
+        <div class="question-box" id="question-1"></div>
+        <div class="answer-display" id="answer-1">&nbsp;</div>
+        <div class="numpad" id="numpad-1">
+          <button class="num-btn" data-digit="1">1</button>
+          <button class="num-btn" data-digit="2">2</button>
+          <button class="num-btn" data-digit="3">3</button>
+          <button class="num-btn" data-digit="4">4</button>
+          <button class="num-btn" data-digit="5">5</button>
+          <button class="num-btn" data-digit="6">6</button>
+          <button class="num-btn" data-digit="7">7</button>
+          <button class="num-btn" data-digit="8">8</button>
+          <button class="num-btn" data-digit="9">9</button>
+          <button class="num-btn btn-del" data-digit="del">&#9003;</button>
+          <button class="num-btn" data-digit="0">0</button>
+          <button class="num-btn btn-ok" data-digit="ok">&#10004;</button>
+        </div>
+      </div>
+
+      <!-- Team 2 (red) -->
+      <div class="team-panel team-red">
+        <div class="question-box" id="question-2"></div>
+        <div class="answer-display" id="answer-2">&nbsp;</div>
+        <div class="numpad" id="numpad-2">
+          <button class="num-btn" data-digit="1">1</button>
+          <button class="num-btn" data-digit="2">2</button>
+          <button class="num-btn" data-digit="3">3</button>
+          <button class="num-btn" data-digit="4">4</button>
+          <button class="num-btn" data-digit="5">5</button>
+          <button class="num-btn" data-digit="6">6</button>
+          <button class="num-btn" data-digit="7">7</button>
+          <button class="num-btn" data-digit="8">8</button>
+          <button class="num-btn" data-digit="9">9</button>
+          <button class="num-btn btn-del" data-digit="del">&#9003;</button>
+          <button class="num-btn" data-digit="0">0</button>
+          <button class="num-btn btn-ok" data-digit="ok">&#10004;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN: Result -->
+  <section id="screen-result" class="screen">
+    <div class="result-card">
+      <div id="result-trophy">&#127942;</div>
+      <h2 id="result-title"></h2>
+      <div id="result-summary"></div>
+      <div class="result-actions">
+        <button id="btn-play-again" class="btn btn-primary" data-i18n="playAgain">Jogar novamente</button>
+        <button id="btn-result-settings" class="btn btn-secondary" data-i18n="settings">Configurações</button>
+        <button id="btn-result-home" class="btn btn-secondary" data-i18n="back">Voltar ao início</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="site-footer">
+    <button id="btn-about" class="footer-link-btn" data-i18n="footerAbout">👤 Sobre o Autor</button>
+    <span class="footer-sep">·</span>
+    <a href="https://github.com/https://github.com/medialabgit" target="_blank" rel="noopener" class="footer-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="vertical-align:-2px;margin-right:4px"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>GitHub
+    </a>
+  </footer>
+
+  <!-- MODAL: All -->
+  <div id="modal-about" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <button id="modal-close" class="modal-close" data-i18n-aria="modalClose" aria-label="Fechar">✕</button>
+
+      <!-- Foto — substitui o src pelo URL da tua foto -->
+      <div class="author-avatar">
+        <img src="foto.jpg" alt="All" id="author-photo" onerror="this.style.display='none'">
+        <span class="avatar-initials">AFC</span>
+      </div>
+
+      <h3 id="modal-title" class="modal-name">All</h3>
+      <p class="modal-bio" data-i18n-html="modalBio">Analista e Desenvolvedor de Sistemas | Multidisciplinar.<br>
+        Fundador do <a href="mundodeahlam" target="_blank" rel="noopener" style="color:var(--blue-dark);font-weight:700;text-decoration:none">Mundo de Ahlam</a></p>
+
+      <div class="modal-links">
+        <a href="https://aldrinosmar" target="_blank" rel="noopener">🌐 Site</a>
+        <a href="https://www.linkedin.com/in/aldrinosmar" target="_blank" rel="noopener">💼 LinkedIn</a>
+        <a href="https://www.instagram.com/aldrinosmar" target="_blank" rel="noopener">📷 Instagram</a>
+      </div>
+
+      <div class="modal-pitch">
+        <p class="modal-pitch-tag" data-i18n="modalPitchTag">🤖</p>
+        <p class="modal-pitch-text" data-i18n="modalPitchText">All</p>
+        <a href="mundodeahlam" target="_blank" rel="noopener" class="modal-pitch-cta" data-i18n="modalPitchCta">
+          Formações para a sua organização ou escola →
+        </a>
+      </div>
+
+      <div class="modal-cc">
+        <p>
+          <a href="https://Creative Commons" target="_blank" rel="noopener">⚖️ Mundo de Ahlam</a>
+          <span data-i18n="modalCC">— Livre para usar, partilhar e adaptar, desde que preserve os direitos do autor.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
